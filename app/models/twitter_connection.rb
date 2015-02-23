@@ -1,8 +1,11 @@
 require 'json'
 require 'oauth'
 require 'yaml'
+require 'singleton'
 
 class TwitterConnection
+  include Singleton
+
   # WHERE ON EARTH ID = BUENOS AIRES ( Montevideo doesn't have trending topics)
   WOEID_BA = 468_739
 
@@ -62,4 +65,5 @@ class TwitterConnection
 
     response_json
   end
+
 end

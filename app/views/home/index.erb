@@ -1,0 +1,20 @@
+<%= render 'devise/shared/navbar' %>
+
+<div class="container main-content">
+  <div class="col-md-8">
+    <%= render 'list_tweets' %>
+  </div>
+  <div class="col-md-3">
+    <ul class="list-group" id="favorite-list">
+      <li class="list-group-item"><strong>Favorites</strong></li>
+    </ul>
+
+    <ul class="list-group" id="trending-list">
+      <li class="list-group-item"><strong>Trending Topics</strong></li>
+      <% @trending_topics.each do |tp| %>
+          <li class="list-group-item"><%= link_to tp, hash: tp %></a></li>
+      <% end %>
+    </ul>
+
+  </div>
+</div>

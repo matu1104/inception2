@@ -4,11 +4,14 @@ gem 'rails', '3.2.19'
 
 gem 'mysql2'
 gem 'oauth'
+gem 'devise'
+gem 'twitter-bootstrap-rails'
 
 group :test do
   gem 'test-unit'
   gem 'shoulda'
   gem 'fakeweb'
+  gem 'mocha'
 end
 
 group :assets do

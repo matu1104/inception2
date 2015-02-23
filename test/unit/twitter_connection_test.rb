@@ -3,7 +3,6 @@ require 'fakeweb'
 
 class TwitterConnectionTest < Test::Unit::TestCase
   def setup
-    @twitter_connection = TwitterConnection.new
     FakeWeb.allow_net_connect = false
   end
 
@@ -17,7 +16,7 @@ class TwitterConnectionTest < Test::Unit::TestCase
     end
 
     should 'return all trending topics from response' do
-      trending_topics = @twitter_connection.trending_topics
+      trending_topics = TwitterConnection.instance.trending_topics
 
       trending_topics_expected = ['#GanaPuntosSi',
                                   '#WordsThatDescribeMe',
@@ -42,11 +41,11 @@ class TwitterConnectionTest < Test::Unit::TestCase
     end
 
     should 'return the amount of tweets returned' do
-      assert_equal 4, @twitter_connection.tweets_with_hashtag('#freebandnames', 4).size
+      assert_equal 4, TwitterConnection.instance.tweets_with_hashtag('#freebandnames', 4).size
     end
 
     should 'get all fields from tweets correctly' do
-      tweets = @twitter_connection.tweets_with_hashtag('#freebandnames', 4)
+      tweets = TwitterConnection.instance.tweets_with_hashtag('#freebandnames', 4)
 
       tweet_expected = { id: 250_075_927_172_759_552,
                          text: 'Aggressive Ponytail #freebandnames',
@@ -93,13 +92,13 @@ class TwitterConnectionTest < Test::Unit::TestCase
     end
 
     should 'raise a RuntimeError Exception with message' do
-      assert_raise(RuntimeError.new('Rate limit exceeded')) { @twitter_connection.trending_topics }
+      assert_raise(RuntimeError.new('Rate limit exceeded')) { TwitterConnection.instance.trending_topics }
     end
   end
 
   context 'Could not get Twitter response' do
     should 'raise a RuntimeError Exception with message' do
-      assert_raise(RuntimeError.new('Could not get Twitter response')) { @twitter_connection.trending_topics }
+      assert_raise(RuntimeError.new('Could not get Twitter response')) { TwitterConnection.instance.trending_topics }
     end
   end
 

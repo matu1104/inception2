@@ -1,0 +1,34 @@
+<ul class="list-group" id="tweets-list">
+<li class="list-group-item"><strong><%= hashtag_name %></strong></li>
+<div id="tweets-div">
+  <% tweets_hashtag.each do |tweet| %>
+      <li class="list-group-item">
+        <div class="row">
+          <div class="col-sm-1 col-md-1">
+            <img class="img-user" src="<%= tweet.user_image_path%>"/>
+          </div>
+          <div class="col-sm-11 col-md-11">
+            <p class="username" data-toggle="modal" data-target="#<%=tweet.username%>">@<%= tweet.username%></p>
+            <p class="text-tweet"><%= tweet.text %></p>
+
+            <!-- modal for user description -->
+            <div class="modal fade" id="<%=tweet.username%>">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">@<%= tweet.username%></h4>
+                  </div>
+                  <div class="modal-body">
+                    <p><%= tweet.user_bio%></p>
+                  </div>
+                </div><!-- /.modal-content -->
+              </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
+
+          </div>
+        </div>
+      </li>
+  <% end %>
+</div>
+</ul>
