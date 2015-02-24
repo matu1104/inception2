@@ -6,7 +6,10 @@ class ApplicationController < ActionController::Base
     if user_signed_in?
       super
     else
-      redirect_to login_path
+      respond_to do |format|
+        format.html { redirect_to login_path }
+        format.json { render json: '{}', status: :unauthorized }
+      end
     end
   end
 end

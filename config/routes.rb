@@ -1,6 +1,8 @@
 TwitterApp::Application.routes.draw do
   devise_for :users
 
+  resources :favorites
+
   root to: 'home#index'
 
   get '/home//:hash', to: 'home#index', as: 'search_hash'

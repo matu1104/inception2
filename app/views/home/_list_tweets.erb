@@ -1,5 +1,11 @@
 <ul class="list-group" id="tweets-list">
-<li class="list-group-item"><strong><%= hashtag_name %></strong></li>
+<li class="list-group-item"><strong id="current-trend"><%= hashtag_name %></strong>
+<% if user_signed_in? %>
+    <% if !current_user.favorites.any? { |favorite| favorite.hashtag == @hashtag_name } %>
+          <button id='favorite-button' type="button" class="btn btn-default btn-xs">Add as favorite</button>
+    <% end %>
+<%end%>
+</li>
 <div id="tweets-div">
   <% tweets_hashtag.each do |tweet| %>
       <li class="list-group-item">

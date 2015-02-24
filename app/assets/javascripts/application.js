@@ -15,3 +15,4 @@
 //= require_tree .
 //= require bootstrap.min
 //= require home
+//= require favorites

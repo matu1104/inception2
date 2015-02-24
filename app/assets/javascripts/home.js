@@ -18,8 +18,7 @@ var Animation = function(){
     };
 
     return animation
-}
-
+};
 
 $().ready(function(){
     var animationModule = Animation();
