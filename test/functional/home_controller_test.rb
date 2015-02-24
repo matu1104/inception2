@@ -91,22 +91,6 @@ class HomeControllerTest < ActionController::TestCase
     end
   end
 
-  private
-  def twitterConnectionLocal(limit_exceed = false)
-    if limit_exceed
-      error = File.open(File.join(Rails.root, 'test', 'fixtures', 'twitter_error.json'))
-      FakeWeb.register_uri(:get, "#{TwitterConnection::TWITTER_API_URL}trends/place.json?id=#{TwitterConnection::WOEID_BA}", body: error.read)
-      FakeWeb.register_uri(:get, "#{TwitterConnection::TWITTER_API_URL}search/tweets.json?q=#{URI.encode('#GanaPuntosSi')}&count=10",
-                           body: error.read)
-    else
-      trends = File.open(File.join(Rails.root, 'test', 'fixtures', 'trends.json'))
-      FakeWeb.register_uri(:get, "#{TwitterConnection::TWITTER_API_URL}trends/place.json?id=#{TwitterConnection::WOEID_BA}", body: trends.read)
-
-      search_tweet = File.open(File.join(Rails.root, 'test', 'fixtures', 'search_tweet.json'))
-      FakeWeb.register_uri(:get, "#{TwitterConnection::TWITTER_API_URL}search/tweets.json?q=#{URI.encode('#GanaPuntosSi')}&count=10",
-                           body: search_tweet.read)
-    end
-  end
 
   def assert_error_page
     assert_template layout: 'layouts/application'
