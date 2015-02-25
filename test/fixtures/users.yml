@@ -7,15 +7,3 @@
 # column: value
 #
 #  column: value
-
-
-user1:
-  username: user1
-  email: user1@mysite.com
-  encrypted_password: <%= Devise.bcrypt(User, 'passw0rd!') %>
-
-user2:
-  username: admin
-  email: admin@mysite.com
-  admin: 1
-  encrypted_password: <%= Devise.bcrypt(User, 'passw0rd!') %>

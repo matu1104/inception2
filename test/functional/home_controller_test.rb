@@ -21,7 +21,8 @@ class HomeControllerTest < ActionController::TestCase
 
   context 'User authenticated' do
     setup do
-      sign_in  User.find_by_email('user1@mysite.com')
+      @user = FactoryGirl.create(:user)
+      sign_in @user
     end
 
     should 'get home page' do

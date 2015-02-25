@@ -4,7 +4,7 @@ class UsersControllerTest < ActionController::TestCase
   include Devise::TestHelpers
 
   def setup
-    @user = User.find_by_email('user1@mysite.com')
+    @user = FactoryGirl.create(:user)
   end
 
   context 'user admin is not authenticated' do
@@ -113,7 +113,7 @@ class UsersControllerTest < ActionController::TestCase
 
   context 'user admin is authenticated' do
     setup do
-      @admin = User.find_by_email('admin@mysite.com')
+      @admin = FactoryGirl.create(:admin)
       sign_in @admin
     end
 

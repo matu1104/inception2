@@ -12,6 +12,7 @@ group :test do
   gem 'shoulda'
   gem 'fakeweb'
   gem 'mocha'
+  gem 'factory_girl_rails'
 end
 
 group :assets do

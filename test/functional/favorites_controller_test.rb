@@ -12,7 +12,7 @@ class FavoritesControllerTest < ActionController::TestCase
 
   context 'User is authenticated' do
     setup do
-      @user = User.find_by_email('user1@mysite.com')
+      @user = FactoryGirl.create(:user)
       sign_in @user
     end
 
@@ -25,11 +25,6 @@ class FavoritesControllerTest < ActionController::TestCase
     end
 
     context 'User has hashtag paramter as favorite' do
-      setup do
-        @user = User.find_by_email('user1@mysite.com')
-        sign_in @user
-      end
-
       should 'return unprocessable_entity response' do
         post :create, {hashtag: '#myhashtag', format: :json}
         assert_response :created

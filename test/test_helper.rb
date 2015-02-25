@@ -9,7 +9,7 @@ class ActiveSupport::TestCase
   #
   # Note: You'll currently still have to declare fixtures explicitly in integration tests
   # -- they do not yet inherit this setting
-  fixtures :all
+  #fixtures :all
 
   # Add more helper methods to be used by all tests here...
   def twitterConnectionLocal(limit_exceed = false)
@@ -27,4 +27,8 @@ class ActiveSupport::TestCase
                            body: search_tweet.read)
     end
   end
+end
+
+class Test::Unit::TestCase
+  include FactoryGirl::Syntax::Methods
 end
