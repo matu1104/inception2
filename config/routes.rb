@@ -3,6 +3,7 @@ TwitterApp::Application.routes.draw do
 
   resources :favorites
   root to: 'home#index'
+  resources :users
 
   get 'tweets/:hash', to: 'tweets#index'
   get '/home//:hash', to: 'home#index', as: 'search_hash'

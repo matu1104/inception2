@@ -27,6 +27,11 @@ var Tweets = function(){
      *
      * @param hashtag represent a twitter hashtag to search
      */
+    module.getCurrentTrendTweets = function(){
+        var currentTrend = $('#current-trend').text();
+        module.getTweets(currentTrend);
+    };
+
     module.getTweets = function(hashtag){
         $.ajax({
             url: '/tweets/' + encodeURIComponent(hashtag),
@@ -74,11 +79,6 @@ var Tweets = function(){
                               bio: tweet.user_bio
         });
         return html
-    };
-
-    module.getCurrentTrendTweets = function(){
-        var currentTrend = $('#current-trend').text();
-        module.getTweets(currentTrend);
     };
 
     module.addUsernameClickListener = function(){

@@ -1,5 +1,4 @@
 class TweetsController < ApplicationController
-
   # GET /tweets/:hash
   def index
     respond_to do |format|

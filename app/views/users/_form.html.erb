@@ -1,0 +1,32 @@
+<%= form_for(@user, html: { class: 'registration-form', role: 'form'}) do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation" class="alert alert-danger" role="alert">
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+    <div class="form-group">
+      <%= f.label :username, class: 'control-label' %> <br />
+      <%= f.text_field :username, placeholder: 'Username', class: 'form-control', require: 'true' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :email, class: 'control-label'%><br />
+      <%= f.email_field :email, placeholder: 'Mail', class: 'form-control', require: 'true' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :password, class: 'control-label' %> <br />
+      <%= f.password_field :password, autocomplete: 'off', placeholder: 'Password', class: 'form-control', require: 'true' %>
+    </div>
+    <div class="checkbox">
+      <label>
+        <%= f.check_box :admin%> <strong> Is admin? </strong>
+      </label>
+    </div>
+  <div class="actions">
+    <%= f.submit 'Done', :class => 'form_submit btn btn-primary pull-right'%>
+  </div>
+<% end %>

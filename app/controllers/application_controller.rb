@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
+  alias :super_authenticate_user! :authenticate_user!
+
   protected
   def authenticate_user!
     if user_signed_in?

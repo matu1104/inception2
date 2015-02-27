@@ -1,0 +1,37 @@
+<%= render 'devise/shared/navbar'%>
+
+<div class="container well main-user">
+  <div class="list-user ">
+    <h1>Listing users</h1>
+
+    <table class=" table table-striped">
+      <tr>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Admin</th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.username%></td>
+        <td><%= user.email%></td>
+        <% if user.admin %>
+            <td>YES</td>
+        <% else %>
+            <td>NO</td>
+        <% end %>
+        <td><%= link_to 'Show', user %></td>
+        <td><%= link_to 'Edit', edit_user_path(user) %></td>
+        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+    </table>
+
+    <br />
+
+    <%= link_to 'New User', new_user_path, { class: 'btn btn-primary pull-right', type: 'button'} %>
+  </div>
+</div>
